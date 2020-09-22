@@ -26,32 +26,41 @@ namespace GuessingGameTemplate4U
 
         private void guessButton_Click(object sender, EventArgs e)
         {
-            
-            int guess = Convert.ToInt16(inputBox.Text);
-
-            //TODO add guess to List of guesses on Form1
-
-
-            if (guess < rand)
+            try
             {
-                outputLabel.Text = "Too Low!";
+                int guess = Convert.ToInt16(inputBox.Text);
+
+                //TODO add guess to List of guesses on Form1
+                Form1.guesses.Add(guess);
+
+                if (guess < rand)
+                {
+                    outputLabel.Text = "Too Low!";
+                }
+                else if (guess > rand)
+                {
+                    outputLabel.Text = "Too High!";
+                }
+                else
+                {
+                    outputLabel.Text = "You Got it!";
+                    Refresh();
+                    Thread.Sleep(1000);
+
+                    //TODO close this screen and open a Results Screen (you need to create this)
+                    Form f = this.FindForm();
+                    f.Controls.Remove(this);
+                    ResultsScreen re = new ResultsScreen();
+                    f.Controls.Add(re);
+                }
+
+                inputBox.Text = "";
+                inputBox.Focus();
             }
-            else if (guess > rand)
+            catch
             {
-                outputLabel.Text = "Too High!";
+                outputLabel.Text = "Please enter a number.";
             }
-            else
-            {
-                outputLabel.Text = "You Got it!";
-                Refresh();
-                Thread.Sleep(1000);
-
-                //TODO close this screen and open a Results Screen (you need to create this)
-
-            }
-
-            inputBox.Text = "";
-            inputBox.Focus();
         }
 
     }
