@@ -19,13 +19,17 @@ namespace GuessingGameTemplate4U
 
         private void ResultsScreen_Load(object sender, EventArgs e)
         {
+            //for loop to display elements
             for (int i = 0; i < Form1.guesses.Count(); i++)
 
             {
                 orderLabel.Text += Form1.guesses[i] + ", ";
             }
 
+            //sort list
             Form1.guesses.Sort();
+
+            //for loop to display elements
             for (int i = 0; i < Form1.guesses.Count(); i++)
 
             {

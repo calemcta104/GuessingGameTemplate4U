@@ -59,6 +59,7 @@ namespace GuessingGameTemplate4U
             }
             catch
             {
+                //error code
                 outputLabel.Text = "Please enter a number.";
             }
         }
